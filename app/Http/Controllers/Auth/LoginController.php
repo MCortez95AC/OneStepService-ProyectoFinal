@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
 
-
 class LoginController extends Controller
 {
     
@@ -29,14 +28,14 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/super';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-   
+
     public function __construct()
     {
             $this->middleware('guest')->except('logout');
@@ -69,12 +68,12 @@ class LoginController extends Controller
 
         if (Auth::guard('worker')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
 
-            return redirect()->intended('/worker');
+            return redirect()->intended('/admin/worker');
         }
         return back()->withInput($request->only('username', 'remember'));
     }
 
-     public function showClientLoginForm()
+    public function showClientLoginForm()
     {
         return view('auth.login', ['url' => 'client']);
     }
