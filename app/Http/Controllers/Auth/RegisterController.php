@@ -54,7 +54,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'requerid|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+
+    protected function validatorClient(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -65,7 +74,7 @@ class RegisterController extends Controller
      */
     public function showWorkerRegisterForm()
     {
-        return view('auth.register', ['url' => 'worker']);
+        return view('managers.generalManager.workers.registerworker', ['url' => 'worker']);
     }
 
     /**
@@ -73,7 +82,7 @@ class RegisterController extends Controller
      */
     public function showClientRegisterForm()
     {
-        return view('auth.register', ['url' => 'client']);
+        return view('managers.generalManager.clients.registerclient', ['url' => 'client']);
     }
 
     /**
@@ -115,13 +124,19 @@ class RegisterController extends Controller
      */
     protected function createClient(Request $request)
     {
-        $this->validator($request->all())->validate();
-        Client::create([
+        $this->validatorClient($request->all())->validate();
+        if($request->ajax()){
+            Client::create($request->all());
+            return response()->json([
+                "mensaje" => "created"
+            ]);
+        };
+        /* Client::create([
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
-        ]);
-        return redirect()->intended('login/client');
+        ]); */
+        /* return redirect()->intended('login/client'); */
     }
 }

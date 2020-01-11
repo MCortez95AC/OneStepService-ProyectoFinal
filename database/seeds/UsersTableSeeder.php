@@ -12,7 +12,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $role_super = Role::where('name','superAdmin')->first();
 
         $user = new User();
         $user->name = 'Miguel';
@@ -21,6 +20,5 @@ class UsersTableSeeder extends Seeder
         $user->password = bcrypt('12345678');
         $user->save();
 
-        $user->roles()->attach($role_super);
     }
 }

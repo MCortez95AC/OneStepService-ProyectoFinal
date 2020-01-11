@@ -116,7 +116,7 @@
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports<span class="float-right text-muted text-sm">2 days</span>
+                        <i class="fas fa-file mr-2"></i> 4 new reports<span class="float-right text-muted text-sm">2 days</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
@@ -125,22 +125,20 @@
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     @if(Auth::guard('worker')->check())
-                        Hello {{Auth::guard('worker')->user()->name}}
+                        Hi {{Auth::guard('worker')->user()->name}}
                     @elseif(Auth::guard()->check())
-                        Hello {{Auth::guard()->user()->name}}
+                        Hi {{Auth::guard()->user()->name}}
                     @elseif(Auth::guard('client')->check())
-                        Hello {{Auth::guard('client')->user()->name}}
+                        Hi {{Auth::guard('client')->user()->name}}
                     @endif
                         <span class="caret"></span>
                 </a>
-
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -185,13 +183,13 @@
                     <a href="#" class="nav-link active"><i class="fas fa-users"></i> <p>Users<i class="right fas fa-angle-left"></i></p></a>
                         <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>New Manager</p></a>
+                            <a href="{{ route('register') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>New Super Manager</p></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Workers</p></a>
+                            <a href="{{ asset('/admin/super/workers') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>All Workers</p></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Clients</p></a>
+                            <a href="{{ asset('/admin/super/clients') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Clients</p></a>
                         </li>
                     </ul>
                 </li>
@@ -199,7 +197,27 @@
                     <a href="#" class="nav-link active"><i class="fas fa-concierge-bell"></i> <p> Service Room<i class="right fas fa-angle-left"></i></p></a>
                         <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Something</p></a>
+                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Workers</p></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Products</p></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Other</p></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview menu-open">
+                    <a href="#" class="nav-link active"><i class="fas fa-concierge-bell"></i> <p> Restaurant<i class="right fas fa-angle-left"></i></p></a>
+                        <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Workers</p></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Products</p></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Other</p></a>
                         </li>
                     </ul>
                 </li>
@@ -219,23 +237,12 @@
     </div>
 <!-- /.content-wrapper -->
 
-<!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
-        </div>
-    </aside>
-    
-<!-- /.control-sidebar -->
-
     <!-- Main Footer -->
     <footer class="main-footer">
-        <div class="float-right d-none d-sm-inline">Anything you want</div>
-        <strong>Copyright &copy; 2020 1StepService. </strong> All rights reserved.     Code by: Miguel Cortez
+        <div class="float-right d-none d-sm-inline">Code by: Miguel Cortez</div>
+        <strong>Copyright &copy; 2020 1StepService. </strong> All rights reserved.
     </footer>
-    </div>
+</div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -247,11 +254,8 @@
 <!-- DataTables -->
 <script src="../../plugins/datatables/jquery.dataTables.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<!-- page script -->
+<!-- App -->
+<script type="text/javascript" src="{{ asset('/js/clientsgenerator.js' )}}"></script>
 <script>
     $(function () {
         $("#example1").DataTable();
