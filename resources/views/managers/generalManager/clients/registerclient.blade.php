@@ -10,17 +10,22 @@
                     <form method="POST" action='{{ url("register/client") }}' aria-label="{{ __('Register') }}">
                     @endisset
 
-                    <div id="client-created" class="alert alert-success alert-dismissible d-none" role="alert" >
-                        <strong> Client created successfuly </strong>
-                    </div>
-                    
+                <div id="msj-success" class="alert alert-success alert-dismissible" role="alert" style="display:none">
+                    <strong> Client created seccessfully.</strong>
+                </div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                {{-- error throw laravel and show ajax --}}
+                                    <span id="msj-error-name" class="text-danger" role="alert" style="display:none">
+                                        <strong id="msj-name"></strong>
+                                    </span>
+                                {{-- Error throw laravel --}}
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
+                                        <strong id="msj"></strong>
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -41,6 +46,10 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="Optional">
+                                {{-- error throw laravel and show ajax --}}
+                                    <span id="msj-error-email" class="text-danger" role="alert" style="display:none">
+                                        <strong id="msj-email"></strong>
+                                    </span>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -54,6 +63,10 @@
                             <div class="input-group ">
                                 <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
                                 <input id="username" type="username" class="col-md-6 form-control @error('username') is-invalid @enderror" name="username" required autocomplete="username" disabled >
+                                {{-- error throw laravel and show ajax --}}
+                                    <span id="msj-error-username" class="text-danger" role="alert" style="display:none">
+                                        <strong id="msj-username"></strong>
+                                    </span>
                                 <span class="input-group-btn">
                                     <button id="gen-button-usr" class="btn btn-default" type="button"><i class="fas fa-redo-alt"></i></button>
                                 </span>
@@ -74,6 +87,7 @@
                                 </span>
                             </div>
                         </div>
+                        
                                 <input type="hidden" id="password-confirm" class="col-md-6 form-control" name="password_confirmation" disabled >
                         {{-- buttons --}}
                         <div class="form-group row mt-3 mb-3">
@@ -84,9 +98,9 @@
                                 <a href="{{ asset('/admin/super/clients') }}" class="btn btn-warning">
                                     {{ __('Cancel') }}
                                 </a>
-                                <a href="#{{-- {{ asset('/admin/super/clients') }} --}}" class="btn btn-success">
+                                <button id="print" href="#{{-- {{ asset('/admin/super/clients') }} --}}" class="btn btn-success" disabled>
                                     {{ __('Print Credentials') }} <i class="fas fa-print"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </form>
