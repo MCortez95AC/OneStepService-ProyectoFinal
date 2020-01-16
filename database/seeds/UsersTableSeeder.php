@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Role;
 use App\user;
 class UsersTableSeeder extends Seeder
 {
@@ -12,7 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-
         $user = new User();
         $user->name = 'Miguel';
         $user->username = "super";

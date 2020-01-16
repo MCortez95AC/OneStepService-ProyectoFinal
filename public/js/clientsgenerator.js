@@ -26,10 +26,10 @@
     ]; 
     
     let finalName = ""
-    let username = document.getElementById("username");
+    let username = $("#username");
 
     $("#gen-button-usr").click(function(event){
-        username.value = usernameGen();
+        username.val(usernameGen());
     });
     
     function usernameGen(){
@@ -42,8 +42,8 @@
     };
 
     //Password generator
-    let password = document.getElementById("password");
-    let passwd_conf = document.getElementById('password-confirm');
+    let password = $("#password");
+    let passwd_conf = $('#password-confirm');
 
     const passwdGen = function (length, nonAlpha) {
         let text = "";
@@ -58,19 +58,19 @@
     }
 
     $("#gen-button-pass").click(function(event){
-        password.value = passwdGen(8);
-        passwd_conf.value = password.value;
+        password.val(passwdGen(8));
+        passwd_conf.val() = password.val();
 
     });
     //Generate credentials to onload page
 
     if(window.location.pathname == "/register/client"){
-        if(username.value === "" && password.value === ""){
+        if(username.val() === "" && password.val() === ""){
             window.onload = function() {
-                username.value = usernameGen();
+                username.val(usernameGen());
                 newPasswd = passwdGen(8)
-                password.value = newPasswd;
-                passwd_conf.value = newPasswd;
+                password.val(newPasswd);
+                passwd_conf.val(newPasswd);
             };
         }
     }
@@ -78,10 +78,10 @@
     //Send the datas to Register controller by Ajax
 
     $("#register").click(function(){
-        let name = document.getElementById('name');
-        let email = document.getElementById('email');
-        let room =document.getElementById('sel1');
-        let passwd_conf = document.getElementById('password-confirm');
+        let name = $('#name');
+        let email = $('#email');
+        let room =$('#sel1');
+        let passwd_conf = $('#password-confirm');
         const url = "http://onestepservice.com/register/client";
         const token = $("#token").val();
 
@@ -91,25 +91,22 @@
             type: 'POST',
             dataType: 'json',
             data: {
-                name: name.value,
-                email: email.value,
-                username: username.value,
-                password: password.value,
-                password_confirmation: passwd_conf.value,
+                name: name.val(),
+                email: email.val(),
+                username: username.val(),
+                password: password.val(),
+                password_confirmation: passwd_conf.val(),
             },
             success:function(){
-                name.value = "";
-                email.value = "";
-                username.value = "";
-                password.value = "";
-                passwd_conf.value = "";
+                name.val("");
+                email.val("");
+                username.val("");
+                password.val("");
+                passwd_conf.val("");
                 
                 $("#msj-success").fadeIn();
                 $("#msj-error").fadeOut();
-                
-                $( "#register" ).on("click",function(){
-                    $("#print").removeAttr("disabled"); 
-                });
+                $("#print").removeAttr("disabled"); 
             },
             error:function(msj){
                 if (msj.responseJSON.errors.name) {

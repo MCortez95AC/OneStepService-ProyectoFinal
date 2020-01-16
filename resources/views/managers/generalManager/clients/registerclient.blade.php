@@ -98,7 +98,7 @@
                                 <a href="{{ asset('/admin/super/clients') }}" class="btn btn-warning">
                                     {{ __('Cancel') }}
                                 </a>
-                                <button id="print" href="#{{-- {{ asset('/admin/super/clients') }} --}}" class="btn btn-success" disabled>
+                                <button type="button" id="print" href="#{{-- {{ asset('/admin/super/clients') }} --}}" class="btn btn-success" disabled>
                                     {{ __('Print Credentials') }} <i class="fas fa-print"></i>
                                 </button>
                             </div>
