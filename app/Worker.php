@@ -9,6 +9,12 @@
     {
         use Notifiable;
 
+        /* Relationship with area model */
+        public function areas(){
+            return $this->belongsToMany(Area::class);
+        }
+
+        /* to create products */
         protected $guard = 'worker';
 
         protected $fillable = [

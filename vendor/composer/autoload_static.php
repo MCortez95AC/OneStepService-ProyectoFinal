@@ -119,6 +119,7 @@ class ComposerStaticInitbab51801f1e3fe6acc63a91cdf88f385
         array (
             'Fideloper\\Proxy\\' => 16,
             'Faker\\' => 6,
+            'FakerRestaurant\\' => 16,
             'Facade\\Ignition\\' => 16,
             'Facade\\IgnitionContracts\\' => 25,
             'Facade\\FlareClient\\' => 19,
@@ -349,6 +350,10 @@ class ComposerStaticInitbab51801f1e3fe6acc63a91cdf88f385
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
+        'FakerRestaurant\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jzonta/faker-restaurant/src',
+        ),
         'Facade\\Ignition\\' => 
         array (
             0 => __DIR__ . '/..' . '/facade/ignition/src',
@@ -421,6 +426,7 @@ class ComposerStaticInitbab51801f1e3fe6acc63a91cdf88f385
     );
 
     public static $classMap = array (
+        'App\\Area' => __DIR__ . '/../..' . '/app/Area.php',
         'App\\Client' => __DIR__ . '/../..' . '/app/Client.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -433,6 +439,7 @@ class ComposerStaticInitbab51801f1e3fe6acc63a91cdf88f385
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -441,6 +448,7 @@ class ComposerStaticInitbab51801f1e3fe6acc63a91cdf88f385
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -735,6 +743,13 @@ class ComposerStaticInitbab51801f1e3fe6acc63a91cdf88f385
         'Facade\\Ignition\\Views\\Concerns\\CollectsViewExceptions' => __DIR__ . '/..' . '/facade/ignition/src/Views/Concerns/CollectsViewExceptions.php',
         'Facade\\Ignition\\Views\\Engines\\CompilerEngine' => __DIR__ . '/..' . '/facade/ignition/src/Views/Engines/CompilerEngine.php',
         'Facade\\Ignition\\Views\\Engines\\PhpEngine' => __DIR__ . '/..' . '/facade/ignition/src/Views/Engines/PhpEngine.php',
+        'FakerRestaurant\\Provider\\de_AT\\Restaurant' => __DIR__ . '/..' . '/jzonta/faker-restaurant/src/Provider/de_AT/Restaurant.php',
+        'FakerRestaurant\\Provider\\de_DE\\Restaurant' => __DIR__ . '/..' . '/jzonta/faker-restaurant/src/Provider/de_DE/Restaurant.php',
+        'FakerRestaurant\\Provider\\en_US\\Restaurant' => __DIR__ . '/..' . '/jzonta/faker-restaurant/src/Provider/en_US/Restaurant.php',
+        'FakerRestaurant\\Provider\\fr_FR\\Restaurant' => __DIR__ . '/..' . '/jzonta/faker-restaurant/src/Provider/fr_FR/Restaurant.php',
+        'FakerRestaurant\\Provider\\it_IT\\Restaurant' => __DIR__ . '/..' . '/jzonta/faker-restaurant/src/Provider/it_IT/Restaurant.php',
+        'FakerRestaurant\\Provider\\ja_JP\\Restaurant' => __DIR__ . '/..' . '/jzonta/faker-restaurant/src/Provider/ja_JP/Restaurant.php',
+        'FakerRestaurant\\Provider\\pt_BR\\Restaurant' => __DIR__ . '/..' . '/jzonta/faker-restaurant/src/Provider/pt_BR/Restaurant.php',
         'Faker\\Calculator\\Ean' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Ean.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Inn.php',
@@ -3209,6 +3224,7 @@ class ComposerStaticInitbab51801f1e3fe6acc63a91cdf88f385
         'PhpParser\\Parser\\Tokens' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Parser/Tokens.php',
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
+        'ProductsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ProductsTableSeeder.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',

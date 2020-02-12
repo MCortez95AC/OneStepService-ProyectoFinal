@@ -8,13 +8,13 @@
     <title>General | Administration</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="{{asset('/plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{asset('/dist/css/adminlte.min.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -53,7 +53,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                    <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                    <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Brad Diesel<span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
@@ -68,7 +68,7 @@
                 <a href="#" class="dropdown-item">
             <!-- Message Start -->
                     <div class="media">
-                    <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                    <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 John Pierce<span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
@@ -83,7 +83,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                    <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                    <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Nora Silvester<span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
@@ -151,8 +151,8 @@
 <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
-            <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="1StepService Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <a href="" class="brand-link">
+            <img src="{{ asset('../../dist/img/AdminLTELogo.png') }}" alt="1StepService Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">1StepService</span>
         </a>
 
@@ -214,7 +214,7 @@
                             <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Workers</p></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Products</p></a>
+                            <a href="{{ asset('/admin/super/restaurant/products') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Products</p></a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Other</p></a>
@@ -248,25 +248,16 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('/plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('/dist/js/adminlte.min.js')}}"></script>
 <!-- App -->
 <script type="text/javascript" src="{{ asset('/js/clientsgenerator.js' )}}"></script>
-<script>
-    $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthMenu": [[5,10,25,50,-1],[5,10,25,50,"All"]],
-            "searching": true,
-            "ordering": false,
-            "info": false,
-            "autoWidth": true,
-        });
-    });
-</script>
+<script type="text/javascript" src="{{ asset('/js/tables.js' )}}"></script>
+</body>
 </html>

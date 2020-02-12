@@ -1,7 +1,7 @@
 <?php
 Route::view('/', 'managers.generalManager.dashboard')->middleware('auth');
 Auth::routes();
-//Proceso login - Registro
+//Login and Register routes
 Route::get('/login/worker', 'Auth\LoginController@showWorkerLoginForm');
 Route::get('/login/client', 'Auth\LoginController@showClientLoginForm');
 Route::get('/register/worker', 'Auth\RegisterController@showWorkerRegisterForm');
@@ -15,10 +15,6 @@ Route::post('/register/client', 'Auth\RegisterController@createClient');
 
 //Homes persons
 
-Route::get('/test',function(){
-    $role = App\User::findOrFail(1);
-    return $role->roles();
-});
 
     //admins
 Route::group(['prefix'=>'admin'],function(){
@@ -32,6 +28,12 @@ Route::group(['prefix'=>'admin'],function(){
         });
         Route::get('clients', function(){
             return view('managers.generalManager.clients.index');
+        });
+
+        Route::group(['prefix'=>'restaurant'],function(){
+            Route::get('products', 'ProductController@index');
+            Route::get('products/create', 'ProductController@create');
+            Route::post('products/create','ProductController@store')->name('products.store');
         });
     });
     //Workers

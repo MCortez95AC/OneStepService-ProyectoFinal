@@ -9,7 +9,7 @@
                     <a href="{{ asset('/register/client') }}" class="btn btn-success float-right">New Client</a>
                 </div>
                 <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
+                    <table id="example2" class="table table-bordered table-hover table-responsive">
                         <thead>
                         <tr>
                             <th>Name </th>

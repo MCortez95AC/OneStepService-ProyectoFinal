@@ -7,7 +7,7 @@
                 <div class="card-header bg-primary">
                     <h3 class="card-title">Restaurant Workers</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body  table-responsive">
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                         <tr>

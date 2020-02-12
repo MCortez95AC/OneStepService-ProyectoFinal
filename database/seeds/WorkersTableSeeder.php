@@ -25,6 +25,8 @@ class WorkersTableSeeder extends Seeder
             ));
         }
         
+        //Super Admin
+        
         $worker = new Worker();
         $worker->name = 'Mike';
         $worker->username = "worker";
