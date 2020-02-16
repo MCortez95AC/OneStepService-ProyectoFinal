@@ -8,24 +8,28 @@
                     <h4>New Product</h4>
                 </div>
                 <div class="card-body  table-responsive">
-                    <form action="{{ route('products.store') }}" method="POST">
+                    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group" >
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" value="{{ old('name') }}" class="form-control">
+                            <span class="text-danger">{{$errors->first('name')}}</span>
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="text"name="price" class="form-control">
+                            <input type="text"name="price" value="{{ old('price') }}" class="form-control">
+                            <span class="text-danger">{{$errors->first('price')}}</span>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <input type="text"name="description" class="form-control">
+                            <input type="text"name="description" value="{{ old('description') }}" class="form-control">
+                            <span class="text-danger">{{$errors->first('description')}}</span>
                         </div>
                         <div class="form-group">
                             <label>Image</label>
-                            <input type='file' name="image" class="form-control" onchange="readURL(this);" />
+                            <input name="image" type="file" class="form-control" onchange="readURL(this);" />
                             <img id="preview" src="" class="img-thumbnail rounded mx-auto d-block" alt="Preview" />
+                            <span class="text-danger">{{$errors->first('image')}}</span>
                         </div>
                 </div>
                     <div class="card-footer">

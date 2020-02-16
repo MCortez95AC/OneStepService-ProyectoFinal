@@ -31,8 +31,8 @@ Route::group(['prefix'=>'admin'],function(){
         });
 
         Route::group(['prefix'=>'restaurant'],function(){
-            Route::get('products', 'ProductController@index');
-            Route::get('products/create', 'ProductController@create');
+            Route::get('products', 'ProductController@index')->name('products.index');
+            Route::get('products/create', 'ProductController@create')->name('products.create');
             Route::post('products/create','ProductController@store')->name('products.store');
         });
     });

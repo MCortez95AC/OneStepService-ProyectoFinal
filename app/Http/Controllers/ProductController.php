@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProductRequest;
 use App\Product;
 use App\Area;
 
@@ -35,17 +36,25 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
+    public function store(StoreProductRequest $request){
+
+        if ($request->hasFile('image')) {
+            $file =$request->file('image');
+            $fileName = time().$file->getClientOriginalName(); //le concat la hora a la imagen para crear el nombre
+            $file->move(public_path().'/images/',$fileName); //guardamos la imagen el la carpeta images en public
+
+        }else return 'falla';
         $product = new Product();
 
+        $product->area_id = 1; //Default restaurant area ID
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->category = 'food';
-        $product->image = $request->input('image');
+        $product->image = $fileName;
         $product->save();
 
-        return 'Saved';
+        return redirect()->route('products.index')->with('info','Carrera creada exitosamente');
     }
 
     /**

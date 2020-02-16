@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->string('category');
             $table->string('image');
+            $table->timestamps();
 
            /*  $table->foreign('area_id')->references('id')->on('areas'); */
         });
