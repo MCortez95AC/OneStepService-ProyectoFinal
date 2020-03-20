@@ -75,7 +75,7 @@ class RegisterController extends Controller
      */
     public function showWorkerRegisterForm()
     {
-        return view('managers.generalManager.workers.registerworker', ['url' => 'worker']);
+       /*  return view('managers.generalManager.workers.registerworker', ['url' => 'worker']); */
     }
 
     /**

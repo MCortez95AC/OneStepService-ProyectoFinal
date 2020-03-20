@@ -7,6 +7,16 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+
+/*my style*/
+.bg-nav{
+  background: #4a4a4f;
+}
+.bg-headers{
+  background: #e54724 !important;
+}
+/*end*/
+
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;

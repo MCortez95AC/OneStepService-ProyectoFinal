@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->double('price');
             $table->text('description');
             $table->string('category');
+            $table->boolean('enable')->default(true);
             $table->string('image');
             $table->timestamps();
 

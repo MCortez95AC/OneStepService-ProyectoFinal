@@ -2,20 +2,11 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-11 mt-4">
+        <div class="col-11">
             <div class="card">
-                <div class="card-header bg-table-headers">
-                    <h3 class="card-title">Restaurant Products</h3>
-                    <a href="{{ route('products.create') }}" class="btn btn-primary float-right">New Product</a>&nbsp
-                    <a href="{{ route('disabled.products') }}" class="btn btn-primary float-right mr-2">Disabled Products</a>
+                <div class="card-header bg-primary">
+                    <h3 class="card-title">Disabled Products</h3>
                 </div>
-                {{-- Created product message --}}
-                @if(session('info'))
-                    <br>
-                    <div class="alert alert-success">
-                        {{session('info')}}
-                    </div>
-                @endif
                 <div class="card-body  table-responsive">
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
@@ -37,17 +28,16 @@
                                 <td>{{$product->category}}</td>
                                 <td><img class="img-responsive" alt="{{$product->name}}" width="200" height="130" src="/images/{{$product->image}}"></td>
                                 <td>
-                                    <a href="{{ route('product.edit',$product->id) }}" class="btn btn-success" type="submit">Edit</a>
                                     <form action="{{ route('product.disable',$product->id) }}" method="post">
                                     @method('put')
                                     @csrf
-                                        <button class="btn btn-warning" type="submit">Disable</button>
+                                        <button class="btn btn-success" type="submit">Enable</button>
                                     </form>
-                                    <form action="{{ route('product.destroy',$product->id) }}" method="post">
+                                    {{--<form action="{{ route('product.destroy',$product->id) }}" method="post">
                                     @method('delete')
                                     @csrf
                                         <button class="btn btn-danger" rol="button" type="submit">Delete</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                             @endforeach

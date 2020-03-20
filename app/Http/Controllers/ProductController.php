@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
+use Illuminate\Support\Facades\File;
 use App\Product;
 use App\Area;
 
@@ -16,11 +17,19 @@ class ProductController extends Controller
      */
     public function index(){
         $area = Area::find(1);
-        $products = $area->products()->get();
-        /* return $products; */
+        $products = $area->products()->where('enable',1)->get();
         return view('managers.generalManager.areaManager.restaurant.products.index', compact('products'));
     }
 
+    /**
+    *Display a listing of disabled products
+    */
+    public function disabledProducts(){
+        $area = Area::find(1);
+        $products = $area->products()->where('enable',0)->get();
+
+        return view('managers.generalManager.areaManager.restaurant.products.disabled', compact('products'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +63,7 @@ class ProductController extends Controller
         $product->image = $fileName;
         $product->save();
 
-        return redirect()->route('products.index')->with('info','Carrera creada exitosamente');
+        return redirect()->route('products.index')->with('info','Product created successfully');
     }
 
     /**
@@ -76,7 +85,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('managers.generalManager.areaManager.restaurant.products.edit',compact('product'));
     }
 
     /**
@@ -88,7 +98,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $product->fill($request->except('image'));
+        if ($request->hasFile('image')) {
+            $file =$request->file('image');
+            $name = time().$file->getClientOriginalName(); //le ponemos concat la hora a la imagen para crear el nombre
+            $product->image = $name;
+            $file->move(public_path().'/images/',$name); //guardamos la imagen el la carpeta images en public
+            
+        }
+
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        $product->save();
+        return redirect()->route('products.index')->with('info','Product updated successfully');
     }
 
     /**
@@ -99,6 +124,21 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $filePath = public_path().'/images/'.$product->image;
+        if (file_exists($filePath)) {
+            \File::delete($filePath);
+        }
+        $product->delete();
+
+
+        return redirect()->route('products.index')->with('info','Product delete successfully');
+    }
+
+    public function disable(Request $request, $id){
+        $product = Product::findOrFail($id);
+        $product->enable = 0;
+        $product->save();
+        return redirect()->route('products.index')->with('info','Product disabled successfully');
     }
 }

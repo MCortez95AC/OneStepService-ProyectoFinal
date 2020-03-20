@@ -16,9 +16,11 @@ class CreateWorkersTable extends Migration
         Schema::create('workers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('username',50)->unique();
+            $table->string('dni')->unique();
+            $table->string('username',50)->unique()->nullable();
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('area');
+            $table->string('password')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();

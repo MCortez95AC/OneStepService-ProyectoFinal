@@ -18,7 +18,17 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             return redirect('/admin/super');
         }
+/*         if (Auth::guard($guard)->check()) {
 
+            if($guard == "worker"){
+                return redirect('/admin/worker');
+            } else if ($guard == "client") {
+                return redirect('/client');
+            }else {
+                return redirect('/admin/super');
+            }
+    
+        } */
         return $next($request);
     }
 }

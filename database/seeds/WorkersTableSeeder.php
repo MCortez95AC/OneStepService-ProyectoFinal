@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\support\Str;
 use App\Worker;
 
 class WorkersTableSeeder extends Seeder
@@ -13,14 +14,15 @@ class WorkersTableSeeder extends Seeder
      */
     public function run()
     {
+        $areas = array('Restaurant', 'Room Service');
         $faker = Faker::create();
         
-        foreach (range(1,20) as $value) {
+        foreach (range(1,10) as $value) {
             \DB::table('workers')->insert(array (
                 'name' => $faker->firstName,
-                'username' => $faker->unique()->userName,
+                'dni' => Str::random(9).$faker->numberBetween(1, 29),
+                'area' => $areas[array_rand($areas,1)],
                 'email' => $faker->unique()->email,
-                'password' => \Hash::make('12345678'),
                 'is_admin' => false
             ));
         }
@@ -29,6 +31,8 @@ class WorkersTableSeeder extends Seeder
         
         $worker = new Worker();
         $worker->name = 'Mike';
+        $worker->dni = '643397089X';
+        $worker->area = 'Restaurant';
         $worker->username = "worker";
         $worker->email = 'worker@1stepservice.es';
         $worker->password = bcrypt('12345678');
