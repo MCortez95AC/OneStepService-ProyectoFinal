@@ -67,30 +67,33 @@ class WorkerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        if ($request->input('isAdmin') === 'Yes') {
-            $this->validatorIfIsAdmin($request->all())->validate();
-            Worker::create([
-                'name' => $request->name,
-                'dni' => $request->dni,
-                'email' => $request->email,
-                'username' => $request->username,
-                'area' => $request->area,
-                'is_admin' => $request->isAdmin,
-                'password' => Hash::make($request->password),
-            ]);
-            return redirect()->route('workers.index')->with('info','Admin Restaurant Worker created successfully');
-        } else{
-            $this->validatorIfNotAdmin($request->all())->validate();
-            Worker::create([
-                'name' => $request->name,
-                'dni' => $request->dni,
-                'email' => $request->email,
-                'area' => $request->area,
-                'is_admin' => $request->isAdmin,
-            ]);
-            return redirect()->route('workers.index')->with('info','Restaurant Worker created successfully');
+    public function store(Request $request){  
+         //if the request is sending by restaunrant the Worker area will be RESTAURANT else ROOM SERVICE
+        if ($request->is('admin/restaurant/*')) {
+            if ($request->input('isAdmin') === 'Yes') {
+                $this->validatorIfIsAdmin($request->all())->validate();
+                Worker::create([
+                    'name' => $request->name,
+                    'dni' => $request->dni,
+                    'email' => $request->email,
+                    'username' => $request->username,
+                    'area' => $request->area,
+                    'is_admin' => 1,
+                    'password' => Hash::make($request->password),
+                ]);
+
+                return $restaurant;/* redirect()->route('workers.index')->with('info','Admin Restaurant Worker created successfully'); */
+            } else{
+                $this->validatorIfNotAdmin($request->all())->validate();
+                Worker::create([
+                    'name' => $request->name,
+                    'dni' => $request->dni,
+                    'email' => $request->email,
+                    'area' => $request->area,
+                    'is_admin' => 0,
+                ]);
+                return redirect()->route('workers.index')->with('info','Restaurant Worker created successfully');
+            }
         }
     }
 

@@ -6,8 +6,8 @@
             <div class="card">
                 <div class="card-header bg-table-headers">
                     <h3 class="card-title">Restaurant Products</h3>
-                    <a href="{{ route('products.create') }}" class="btn btn-primary float-right">New Product</a>&nbsp
-                    <a href="{{ route('disabled.products') }}" class="btn btn-primary float-right mr-2">Disabled Products</a>
+                    <a href="{{ route('products.create') }}" class="btn bg-newOjbect float-right">New Product</a>&nbsp
+                    <a href="{{ route('disabled.products') }}" class="btn bg-newOjbect float-right mr-2">Disabled Products</a>
                 </div>
                 {{-- Created product message --}}
                 @if(session('info'))

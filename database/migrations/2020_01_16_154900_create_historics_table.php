@@ -16,7 +16,8 @@ class CreateHistoricsTable extends Migration
         Schema::create('historics', function (Blueprint $table) {
             $table->Increments('id');
             $table->date('entry_date');
-            $table->date('departure_date');
+            $table->date('departure_date')->nullable();
+            $table->timestamps();
             
             $table->integer('room_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('rooms');

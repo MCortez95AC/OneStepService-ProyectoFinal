@@ -1,15 +1,15 @@
 @extends('managers.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-11 mt-4">
             <div class="card">
-                <div class="card-header bg-primary">
+                <div class="card-header bg-table-headers">
                     <h3 class="card-title">Hotel Clients</h3>
-                    <a href="{{ asset('/register/client') }}" class="btn btn-success float-right">New Client</a>
+                    <a href="{{ route('client.create') }}" class="btn bg-newOjbect float-right">New Client</a>
                 </div>
-                <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover table-responsive">
+                <div class="card-body table-responsive">
+                    <table id="example2" class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>Name </th>

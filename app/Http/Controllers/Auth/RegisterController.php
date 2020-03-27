@@ -60,31 +60,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function validatorClient(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255|unique:clients',
-            'email' => 'unique:clients',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showWorkerRegisterForm()
-    {
-       /*  return view('managers.generalManager.workers.registerworker', ['url' => 'worker']); */
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function showClientRegisterForm()
-    {
-        return view('managers.generalManager.clients.registerclient', ['url' => 'client']);
-    }
 
     /**
      * @param array $data
@@ -106,17 +84,6 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function createWorker(Request $request)
-    {
-        $this->validator($request->all())->validate();
-        Worker::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-        ]);
-        return redirect()->intended('login/worker');
-    }
 
     /**
      * @param Request $request

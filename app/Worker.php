@@ -18,7 +18,8 @@
         protected $guard = 'worker';
 
         protected $fillable = [
-            'name', 'email', 'password', 'username'
+            'name', 'dni', 'email', 'area','is_admin',
+            'password', 'username','password_confirmation'
         ];
 
         protected $hidden = [

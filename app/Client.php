@@ -12,7 +12,7 @@
         protected $guard = 'client';
 
         protected $fillable = [
-            'name', 'email', 'password', 'username'
+            'name', 'email', 'password', 'username', 'hotel_account','historic_id','num_target','paypal'
         ];
 
         protected $hidden = [

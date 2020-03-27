@@ -19,9 +19,9 @@ class CreateClientsTable extends Migration
             $table->string('username',20)->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('num_target');
-            $table->string('paypal');
-            $table->string('hotel_account')->unique();
+            $table->string('num_target')->nullable();
+            $table->string('paypal')->nullable();
+            $table->string('hotel_account')->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
 

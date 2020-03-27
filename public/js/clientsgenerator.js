@@ -64,7 +64,7 @@
     });
     //Generate credentials to onload page
 
-    if(window.location.pathname == "/register/client"){
+    if(window.location.pathname == "/admin/client/create"){
         if(username.val() === "" && password.val() === ""){
             window.onload = function() {
                 username.val(usernameGen());
@@ -76,14 +76,23 @@
     }
 
     //Send the datas to Register controller by Ajax
+    let roomId;
+    function getRoom(event){
+        roomId = $(event.target).closest('div').data('id')
+        const roomNumber = $(event.target).closest('div').text()
+
+        $('#roomNumber').val(roomNumber);
+    }
 
     $("#register").click(function(){
         let name = $('#name');
         let email = $('#email');
-        let room =$('#sel1');
+        let room =$('#roomNumber');
         let passwd_conf = $('#password-confirm');
-        const url = "http://onestepservice.com/register/client";
+        const url = "http://onestepservice.com/admin/client/create";
         const token = $("#token").val();
+
+        console.log(roomId)
 
         $.ajax({
             url: url,
@@ -92,12 +101,14 @@
             dataType: 'json',
             data: {
                 name: name.val(),
+                room: room.val(),
+                roomId: roomId,
                 email: email.val(),
                 username: username.val(),
                 password: password.val(),
                 password_confirmation: passwd_conf.val(),
             },
-            success:function(){
+            success:function(response){
                 name.val("");
                 email.val("");
                 username.val("");
@@ -107,9 +118,11 @@
                 $("#msj-success").fadeIn();
                 $("#msj-error").fadeOut();
                 $("#print").removeAttr("disabled"); 
+                console.log(response);
+                
             },
             error:function(msj){
-                if (msj.responseJSON.errors.name) {
+/*                 if (msj.responseJSON.errors.name) {
                     $("#msj-name").html(msj.responseJSON.errors.name);
                     $("#msj-error-name").fadeIn();
                 }
@@ -121,6 +134,11 @@
                     $("#msj-username").html(msj.responseJSON.errors.username);
                     $("#msj-error-username").fadeIn();
                 }
+                if (msj.responseJSON.errors.password) {
+                    $("#msj-username").html(msj.responseJSON.errors.password);
+                    $("#msj-error-username").fadeIn();
+                } */
+                console.log(msj)
             }
         });
     });
