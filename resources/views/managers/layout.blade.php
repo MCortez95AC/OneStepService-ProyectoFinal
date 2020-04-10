@@ -179,10 +179,10 @@
                     <a href="#" class="nav-link active"><i class="fas fa-concierge-bell"></i> <p> Service Room<i class="right fas fa-angle-left"></i></p></a>
                         <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Workers</p></a>
+                            <a href="{{ asset('/admin/room-service/workers') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Workers</p></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Products</p></a>
+                            <a href="{{ asset('/admin/room-service/products') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Products</p></a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Other</p></a>
