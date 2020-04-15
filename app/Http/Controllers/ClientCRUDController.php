@@ -9,7 +9,7 @@ use App\Client;
 use App\Historic;
 use Illuminate\support\Str;
 
-class ClientController extends Controller
+class ClientCRUDController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,7 +31,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        return view('managers.generalManager.workers.registerworker', ['url' => 'worker']);
+        return view('managers.generalManager.clients.index');
     }
 
     /**

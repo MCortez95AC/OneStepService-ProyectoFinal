@@ -10,16 +10,48 @@
             </button>
             <div class="collapse text-center navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="{{ route('client.home') }}" style="background-color: #007bff00;"><i class="fas fa-home"></i> Home</a>
+                    </li>
                     @foreach($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link btn" href="#">{{$category->name}}</a>
+                            <a class="nav-link btn" href="{{ route('products.category',$category->name)}}">{{$category->name}}</a>
                         </li>
                     @endforeach
                     <li class="nav-item">
-                        <button class="btn btn-primary" style="background-color: #007bff00;"><i class="fas fa-concierge-bell"></i> My order</button>
+                        <a href="{{ route('restaurant.myOrder') }}" class="btn btn-primary" style="background-color: #007bff00;"><i class="fas fa-concierge-bell"></i> My order <span class="badge-order">0</span></a>
+                        
                     </li>
                 </ul>
             </div>  
         </nav>
+        <hr>
+        <div class="container w-85">
+            <div class="row justify-content-center">
+                
+                @foreach($products as $product)
+                    <div class="col-sm-4 rounded">
+                        <div class="card">
+                            <img class="card-img-top img-responsive" src="/images/RestaurantProducts/{{$product->image}}" alt="{{$product->name}}">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">{{$product->name}}, {{$product->price}} €</h6>
+                                <p class="card-text text-dark collapse " id="block-{{$product->id}}">{{$product->description}}</p>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="#block-{{$product->id}}" class="card-link btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="block-{{$product->id}}">
+                                        <span class="collapsed">
+                                            Read more
+                                        </span>
+                                        <span class="expanded">
+                                            Read Less
+                                        </span>
+                                    </a>
+                                    <a type="button" class="btn btn-primary ml-1"><i class="fas fa-plus-circle"></i> Order</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 @endsection

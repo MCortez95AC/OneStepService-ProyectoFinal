@@ -2,9 +2,9 @@ $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
         "paging": true,
-        "lengthMenu": [[5,10,25,50,-1],[5,10,25,50,"All"]],
+        "lengthMenu": [[3,5,8,10,-1],[3,5,8,10,"All"]],
         "searching": true,
-        "ordering": false,
+        "ordering": true,
         "info": false,
         "autoWidth": true,
     });

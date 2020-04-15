@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use Illuminate\Support\Facades\File;
 use App\Product;
 use App\Area;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -36,7 +37,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('managers.generalManager.areaManager.restaurant.products.create');
+        $categories = Category::all();
+        return view('managers.generalManager.areaManager.restaurant.products.create', \compact('categories'));
     }
 
     /**
@@ -50,7 +52,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $file =$request->file('image');
             $fileName = time().$file->getClientOriginalName(); //le concat la hora a la imagen para crear el nombre
-            $file->move(public_path().'/images/',$fileName); //guardamos la imagen el la carpeta images en public
+            $file->move(public_path().'/images/RestaurantProducts/',$fileName); //guardamos la imagen el la carpeta images en public
 
         }else return 'falla';
         $product = new Product();
@@ -59,7 +61,7 @@ class ProductController extends Controller
         $product->name = $request->input('name');
         $product->price = $request->input('price');
         $product->description = $request->input('description');
-        $product->category = 'food';
+        $product->category = $request->input('category');
         $product->image = $fileName;
         $product->save();
 
@@ -105,7 +107,7 @@ class ProductController extends Controller
             $file =$request->file('image');
             $name = time().$file->getClientOriginalName(); //le ponemos concat la hora a la imagen para crear el nombre
             $product->image = $name;
-            $file->move(public_path().'/images/',$name); //guardamos la imagen el la carpeta images en public
+            $file->move(public_path().'/images/RestaurantProducts/',$name); //guardamos la imagen el la carpeta images en public
             
         }
 
@@ -125,7 +127,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $filePath = public_path().'/images/'.$product->image;
+        $filePath = public_path().'/images/RestaurantProducts/'.$product->image;
         if (file_exists($filePath)) {
             \File::delete($filePath);
         }

@@ -26,6 +26,15 @@
                             <span class="text-danger">{{$errors->first('description')}}</span>
                         </div>
                         <div class="form-group">
+                            <label for="category">Category</label>
+                            <select class="form-control" id="category" value="{{ old('category') }}" name="category">
+                                @foreach($categories as $category)
+                                    <option>{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            <span class="text-danger">{{$errors->first('category')}}</span>
+                        </div>
+                        <div class="form-group">
                             <label>Image</label>
                             <input name="image" type="file" class="form-control" onchange="readURL(this);" />
                             <img id="preview" src="" class="img-thumbnail rounded mx-auto d-block" alt="Preview" />

@@ -28485,16 +28485,15 @@ a.text-muted:hover {
 }
 
 #client-footer{
-  /* height: 10vh; */
   width: 100%;
   margin-left:0
 }
 
-@media screen and (min-width: 320px){
+/* @media screen and (min-height: 760px){
   #client-footer {
     position: fixed;
     bottom: 0;
-  }
+  } */
 
 /* inons */
 
@@ -28573,29 +28572,4 @@ a.text-muted:hover {
 .icon-gplus::after {
   background: #dc4e41;
 }
-
-
-
-
-
-span.thmheader {
-  position: absolute; 
-  text-align: center; 
-  display: block; 
-  width: 100%;
-  padding-top: 15px;
-  background-color: rgba(33, 34, 37, 0.59);
-  font-size: 16px; color: #ffffff;
-
-}
-@media screen and (max-width: 480px) {
-  span.thmheader {
-    width: calc(100% - 80px);
-  }
-}
-.thmheader,img:hover{
-  background-color: rgba(74,123,141,0.9);
-  transition: all 175ms linear;
-}
-
 /*# sourceMappingURL=adminlte.css.map */

@@ -25,7 +25,7 @@ class StoreProductRequest extends FormRequest
             'image' => 'required|image',
             'name' => 'required|string',
             'price' => 'required|min:0.50',
-            'description' => 'required|max:30'
+            'description' => 'required|max:500'
         ];
     }
     public function messages(){

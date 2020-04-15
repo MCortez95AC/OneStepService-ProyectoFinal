@@ -1,16 +1,55 @@
+body {
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Droid Serif", serif;
+}
+span.thmheader {
+  position: absolute; 
+  text-align: center; 
+  display: block; 
+  width: 100%;
+  padding-top: 15px;
+  background-color: rgba(33, 34, 37, 0.59);
+  font-size: 16px; color: #ffffff;
+
+}
+
+.thmheader,img:hover{
+  background-color: rgba(74,123,141,0.9);
+  transition: all 175ms linear;
+}
+
+.badge-order {
+  background-color: rgb(245, 48, 48);
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
 .bg { 
     background-image:url("/images/client/restaurant/home-restaurant.jpg");
     width:100%;
-    height:100vh;
+    /* height:83vh; */
     /* position:absolute; */
-    top:0;
-    bottom:0;; 
+/*     top:0;
+    bottom:0;;  */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    box-shadow:inset 0 0 0 2000px rgba(92, 85, 89, 0.3);
+    box-shadow:inset 0 0 0 2000px rgba(108, 104, 107, 0.64);
     color:#fff;
   }
+  /* @media screen and (max-height: 760px) {
+    .bg {
+    height: calc(83vh + 10vh);
+  }
+} */
   
   #navbar-restaurant{
     background-color: #343a4000 !important;
@@ -22,3 +61,8 @@
   .nav-item:hover{
     border-bottom: solid 1 white;
   }
+
+  [aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
+  display: none;
+}

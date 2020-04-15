@@ -24,7 +24,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('/dist/css/1stepservice.css')}}">
-    <link rel="stylesheet" href="{{asset('/dist/css/restaurant.css')}}">
+    <link rel="stylesheet" href="{{asset('/dist/css/myOrder.css')}}">
 </head>
 <body style="background-color:#8483831f">
     <div id="app">
@@ -157,7 +157,10 @@
         <strong>Copyright &copy; 2020 1StepService. </strong> All rights reserved.
     </footer>
     </div>
+    <!-- jQuery -->
+    <script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" src="{{ asset('/js/myOrder.js' )}}"></script>
 </body>
 </html>

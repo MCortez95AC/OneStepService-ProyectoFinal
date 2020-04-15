@@ -2,8 +2,8 @@
 Route::get('/', 'Auth\LoginController@showClientLoginForm');
 Auth::routes();
 //Login and Register routes
-Route::get('/login/worker', 'Auth\LoginController@showWorkerLoginForm');
-Route::get('/login/client', 'Auth\LoginController@showClientLoginForm');
+Route::get('/login/worker', 'Auth\LoginController@showWorkerLoginForm')->name('worker.login');
+Route::get('/login/client', 'Auth\LoginController@showClientLoginForm')->name('client.login');
 
 Route::post('/login/worker', 'Auth\LoginController@workerLogin');
 Route::post('/login/client', 'Auth\LoginController@clientLogin');
@@ -67,6 +67,8 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
             Route::get('home', 'clientsView\ClientController@home')->name('client.home');
             Route::group(['prefix'=>'restaurant'],function(){
                 Route::get('home','clientsView\RestaurantController@index')->name('restaurant.home');
+                Route::get('products/{category}','clientsView\RestaurantController@index')->name('products.category');
+                Route::get('myOrder','clientsView\RestaurantController@myOrder')->name('restaurant.myOrder');
             });
             
         });
