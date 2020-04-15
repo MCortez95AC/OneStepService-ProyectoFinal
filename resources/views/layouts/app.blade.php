@@ -13,7 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('/dist/css/login.css')}}">
-{{--     <link rel="stylesheet" href="{{asset('/dist/css/1stepservice.css')}}"> --}}
+    <link rel="stylesheet" href="{{asset('/dist/css/1stepservice.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 

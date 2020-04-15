@@ -82,7 +82,7 @@ class WorkerController extends Controller
                     'password' => Hash::make($request->password),
                 ]);
 
-                return $restaurant;/* redirect()->route('workers.index')->with('info','Admin Restaurant Worker created successfully'); */
+                return redirect()->route('workers.index')->with('info','Admin Restaurant Worker created successfully');
             } else{
                 $this->validatorIfNotAdmin($request->all())->validate();
                 Worker::create([

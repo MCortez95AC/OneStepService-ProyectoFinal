@@ -38,9 +38,10 @@ class LoginController extends Controller
 
     public function __construct()
     {
-            $this->middleware('guest')->except('logout');
-            $this->middleware('guest:worker')->except('logout');
-            $this->middleware('guest:client')->except('logout');
+        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:client')->except('logout');
+        $this->middleware('guest:worker')->except('logout');
+            
     }
 
     //This is the code with the user con login with username
@@ -56,7 +57,7 @@ class LoginController extends Controller
 
     public function showWorkerLoginForm()
     {
-        return view('auth.login', ['url' => 'Admin Worker']);
+        return view('auth.login', ['url' => 'worker']);
     }
 
     public function workerLogin(Request $request)
@@ -75,7 +76,7 @@ class LoginController extends Controller
 
     public function showClientLoginForm()
     {
-        return view('auth.login', ['url' => 'Wellcome to LSHotel ']);
+        return view('auth.login', ['url' => 'client']);
     }
 
     public function clientLogin(Request $request)
@@ -85,10 +86,12 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('client')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
+        $credentials = $request->only('username', 'password');
+        if (Auth::guard('worker')->attempt($credentials, $request->get('remember'))) {
 
-            return redirect()->intended('/client');
+            return redirect()->intended('/client/home');
         }
-        return back()->withInput($request->only('username', 'remember'));
+
+        return back()->withInput($request->only('username', 'remember', 'message','No matches'));
     }
 }

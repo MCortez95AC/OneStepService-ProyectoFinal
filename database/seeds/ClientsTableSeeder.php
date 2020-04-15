@@ -13,15 +13,26 @@ class ClientsTableSeeder extends Seeder
      */
     public function run()
     {
+
+        $client = new Client();
+        $client->name ="Oriol";
+        $client->username = "client";
+        $client->email = "oriolClient@1stepservice.cat";
+        $client->password ="12345678";
+        $client->historic_id = 1;
+
+        
+        $client->save();
+
         $faker = Faker::create();
 
-        foreach (range(1,10) as $value) {
+        /* foreach (range(1,10) as $value) {
             \DB::table('clients')->insert(array (
                 'name' => $faker->firstName,
                 'username' => $faker->userName,
                 'email' => $faker->email,
                 'password' => \Hash::make('12345678')
             ));
-        }
+        } */
     }
 }

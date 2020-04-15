@@ -38,5 +38,15 @@ class WorkersTableSeeder extends Seeder
         $worker->password = bcrypt('12345678');
         $worker->is_admin =true;
         $worker->save();
+
+        $client = new Worker();
+        $client->name = 'Oriol';
+        $client->dni = '643367089X';
+        $client->area = 'cliente';
+        $client->username = "client";
+        $client->email = 'client@1stepservice.es';
+        $client->password = bcrypt('12345678');
+        $client->is_admin =true;
+        $client->save();
     }
 }

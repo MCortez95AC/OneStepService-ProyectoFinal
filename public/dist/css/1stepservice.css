@@ -11246,7 +11246,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 
 .main-footer {
   background: #ffffff;
-  border-top: 1px solid #dee2e6;
+  /* border-top: 1px solid #dee2e6; */
   color: #869099;
   padding: 1rem;
 }
@@ -11294,7 +11294,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 }
 
 .main-header {
-  border-bottom: 1px solid #dee2e6;
+  /* border-bottom: 1px solid #dee2e6; */
   z-index: 1034;
 }
 
@@ -28483,4 +28483,119 @@ a.text-muted:hover {
   background-color: #ffffff;
   border-color: #dee2e6;
 }
+
+#client-footer{
+  /* height: 10vh; */
+  width: 100%;
+  margin-left:0
+}
+
+@media screen and (min-width: 320px){
+  #client-footer {
+    position: fixed;
+    bottom: 0;
+  }
+
+/* inons */
+
+.wrp {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.wrp::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.icon {
+  display: inline-block;
+  font-size: 30px;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+  color: #4099ff;
+  border-radius: 100%;
+  position: relative;
+}
+.icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 100%;
+  background: rgba(0,0,0,0.1);
+  z-index: -1;
+}
+.icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  background: #4099ff;
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.icon-twitter {
+  color: #4099ff;
+}
+.icon-twitter::after {
+  background: #4099ff;
+}
+.icon-facebook {
+  color: #3b5998;
+}
+.icon-facebook::after {
+  background: #3b5998;
+}
+.icon-instagram {
+  color: #3f729b;
+}
+.icon-instagram::after {
+  background: #3f729b;
+}
+.icon-gplus {
+  color: #dc4e41;
+  margin-right: 0 !important;
+}
+.icon-gplus::after {
+  background: #dc4e41;
+}
+
+
+
+
+
+span.thmheader {
+  position: absolute; 
+  text-align: center; 
+  display: block; 
+  width: 100%;
+  padding-top: 15px;
+  background-color: rgba(33, 34, 37, 0.59);
+  font-size: 16px; color: #ffffff;
+
+}
+@media screen and (max-width: 480px) {
+  span.thmheader {
+    width: calc(100% - 80px);
+  }
+}
+.thmheader,img:hover{
+  background-color: rgba(74,123,141,0.9);
+  transition: all 175ms linear;
+}
+
 /*# sourceMappingURL=adminlte.css.map */

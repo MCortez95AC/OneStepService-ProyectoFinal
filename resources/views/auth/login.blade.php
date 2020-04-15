@@ -16,40 +16,40 @@
             <div class="carousel-item active">
             <div class="background-overlay"></div>
             <div class="slide" style="background-image:url({{asset("/images/login-carousel/national-museum-of-art-of-catalunya.jpg")}});background-size:cover;"> </div>
-            <div class="carousel-caption">
-                <h1 class="slide__title">National Museum</h1>
-                <p class="slide__text">The quality or state of being active.</p>
-                <a href="#" class="slide__button">Read More</a>
-            </div>
+                <div class="carousel-caption">
+                    <h1 class="slide__title">National Museum</h1>
+                    <p class="slide__text">The quality or state of being active.</p>
+                    <a href="#" class="slide__button">Read More</a>
+                </div>
             </div>
             <div class="carousel-item">
             <div class="background-overlay"></div>
             <div class="slide" style="background-image:url({{asset("/images/login-carousel/sagrada-familia.jpg")}});background-size:cover;"></div>
-            <div class="carousel-caption">
-                <h1 class="slide__title">Sagrada Familia</h1>
-                <p class="slide__text">Oral exchange of sentiments, observations, opinions, or ideas </p>
-                <a href="#" class="slide__button">Read More</a>
-            </div>
+                <div class="carousel-caption">
+                    <h1 class="slide__title">Sagrada Familia</h1>
+                    <p class="slide__text">Oral exchange of sentiments, observations, opinions, or ideas </p>
+                    <a href="#" class="slide__button">Read More</a>
+                </div>
             </div>
             <div class="carousel-item">
             <div class="background-overlay"></div>
             <div class="slide" style="background-image:url({{asset("/images/login-carousel/arc-de-triumf.jpg")}});background-size:cover;"></div>
-            <div class="carousel-caption">
-                <h1 class="slide__title">Arc De Triomf</h1>
-                <p class="slide__text">A specified task or amount of work assigned or undertaken.</p>
-                <a href="#" class="slide__button">Read More</a>
-            </div>
+                <div class="carousel-caption">
+                    <h1 class="slide__title">Arc De Triomf</h1>
+                    <p class="slide__text">A specified task or amount of work assigned or undertaken.</p>
+                    <a href="#" class="slide__button">Read More</a>
+                </div>
             </div>
         </div>
         <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#loginCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-                            </a>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
         <a class="carousel-control-next" href="#loginCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-                            </a>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
         </div>
     </section>
     <!-- Login -->
@@ -58,7 +58,7 @@
         <article class="panel__header">
             <div class="header__brand">
                 <h2 href="" class="brand-link">
-                    <img src="{{ asset('./images/logo/logo2.png') }}" width="100" height="auto" alt="1StepService Logo" class="brand-image img-circle elevation-3">
+                    <img src="{{ asset('./images/logo/logo2.png') }}" width="100" height="auto" alt="1StepService Logo" class="brand-image rounded-circle img-circle elevation-3">
                     <span class="brand-text font-weight-light">1StepService</span>
                 </h2>
             </div>
@@ -71,7 +71,9 @@
         @endisset
             @csrf
             <div class="sign text-center">
-            <h4 class="sign__input">{{ isset($url) ? ucwords($url) : ""}}</h4>
+                <h4 class="sign__input">
+                    {{isset($url) ? ucwords($url) : "Admin"}}
+                </h4>
             <div class="form-group">
                 <input type="text"placeholder="Enter your username" class="form-control  @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
                 @error('username')

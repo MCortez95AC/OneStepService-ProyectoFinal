@@ -1,5 +1,5 @@
 <?php
-Route::view('/', 'managers.generalManager.dashboard')->middleware('auth');
+Route::get('/', 'Auth\LoginController@showClientLoginForm');
 Auth::routes();
 //Login and Register routes
 Route::get('/login/worker', 'Auth\LoginController@showWorkerLoginForm');
@@ -45,8 +45,6 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
             Route::delete('products/{id}','ProductRoomServiceController@destroy')->name('product.rs.destroy');
             Route::put('products/{id}/disabled','ProductRoomServiceController@disable')->name('product.rs.disable');
 
-
-                /* Restaurant Workers */
             Route::get('workers','WorkerRoomServiceController@index')->name('workers.rs.index');
             Route::get('worker/create','WorkerRoomServiceController@create')->name('worker.rs.create');
             Route::post('product/cretate','WorkerRoomServiceController@store')->name('worker.rs.store');
@@ -57,13 +55,19 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
             return view('managers.generalManager.areaManager.restaurant.dashboard');
         });
 
-
         //Clients Model
-        Route::get('clients', function(){
-            return view('managers.generalManager.clients.index');
-        });
-        Route::get('/client/create', 'ClientController@create')->name('client.create');
-        Route::post('/client/create', 'clientController@store')->name('client.store');
+        Route::get('clients','ClientCRUDController@index')->name('client.index');
+        Route::get('/client/create', 'ClientCRUDController@create')->name('client.create');
+        Route::post('/client/create', 'clientCRUDController@store')->name('client.store');
     });
 });
     //Clients View
+    Route::group(['middleware' => ['auth:worker']],function(){
+        Route::group(['prefix'=>'client'],function(){
+            Route::get('home', 'clientsView\ClientController@home')->name('client.home');
+            Route::group(['prefix'=>'restaurant'],function(){
+                Route::get('home','clientsView\RestaurantController@index')->name('restaurant.home');
+            });
+            
+        });
+    });
