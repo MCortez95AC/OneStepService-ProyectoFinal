@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
                 Route::get('home','clientsView\RestaurantController@index')->name('restaurant.home');
                 Route::get('products/{category}','clientsView\RestaurantController@index')->name('products.category');
                 Route::get('myOrder','clientsView\RestaurantController@myOrder')->name('restaurant.myOrder');
+                Route::Post('tempOrder/create','clientsView\RestaurantController@newTempOrder')->name('restaurant.tempOrder');
             });
             
         });

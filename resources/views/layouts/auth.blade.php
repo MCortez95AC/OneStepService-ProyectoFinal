@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('/plugins/fontawesome-free/css/all.min.css') }}">
@@ -157,7 +157,11 @@
         <strong>Copyright &copy; 2020 1StepService. </strong> All rights reserved.
     </footer>
     </div>
+    
+    <script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap 4 -->
     <script src="{{asset('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" src="{{ asset('/js/addToOrder.js' )}}"></script>
 </body>
 </html>

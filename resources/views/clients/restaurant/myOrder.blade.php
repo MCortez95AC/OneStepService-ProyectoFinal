@@ -13,7 +13,7 @@
                     <div class="infoWrap"> 
                         <div class="cartSection">
                             <img src="/images/RestaurantProducts/1586958249bacalla-amb-samfaina.jpg" alt="product" class="itemImg" />
-                            <h3>Item Name 1</h3>
+                            <h3 class="name">Product 0</h3>
                             <p> <input type="number" class="form-control text-center qty" value="1"> x $5.00</p>
                             <p class="movil d-none"> =</p>
                             <p class="stockStatus movil d-none">$15.00</p>
@@ -32,7 +32,7 @@
                     <div class="infoWrap"> 
                         <div class="cartSection">
                             <img src="/images/RestaurantProducts/1586958249bacalla-amb-samfaina.jpg" alt="" class="itemImg" />
-                            <h3>Item Name 1</h3>
+                            <h3 class="name">Product 1</h3>
                             <p> <input type="number" class="form-control text-center qty" value="1"> x $5.00</p>
                             <p class="movil d-none"> =</p>
                             <p class="stockStatus movil d-none">$15.00</p>
@@ -50,9 +50,9 @@
                 <li class="items odd">
                     <div class="infoWrap"> 
                         <div class="cartSection">
-                            <img src="/images/RestaurantProducts/1586958249bacalla-amb-samfaina.jpg" alt="" class="itemImg" />
-                            <h3>Item Name 1</h3>
-                            <p> <input type="number" class="form-control text-center qty" value="1"> x $5.00</p>
+                            <img id="img" src="/images/RestaurantProducts/1586958249bacalla-amb-samfaina.jpg" alt="" class="itemImg" />
+                            <h3 class="name">Product 2</h3>
+                            <p> <input id="" type="number" class="form-control text-center qty" value="1"> x $5.00</p>
                             <p class="movil d-none"> =</p>
                             <p class="stockStatus movil d-none">$15.00</p>
                             &nbsp
@@ -70,7 +70,26 @@
                     <div class="infoWrap"> 
                         <div class="cartSection">
                             <img src="/images/RestaurantProducts/1586958249bacalla-amb-samfaina.jpg" alt="" class="itemImg" />
-                            <h3>Item Name 1</h3>
+                            <h3 class="name">Product 3</h3>
+                            <p> <input type="number" class="form-control text-center qty" value="1"> x $5.00 </p>
+                            <p class="movil d-none"> =</p>
+                            <p class="stockStatus movil d-none">$15.00</p>
+                            &nbsp
+                            <a href="#" class="d-none movil btn btn-danger btn-sm remove "><i class="fa fa-trash-o"></i></a>
+                        </div>  
+                        <div class="prodTotal cartSection">
+                            <p>$15.00</p>
+                        </div>
+                        <div class="cartSection removeWrap">
+                            <a href="#" class="btn btn-danger btn-sm remove"><i class="fa fa-trash-o"></i></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="items odd">
+                    <div class="infoWrap"> 
+                        <div class="cartSection">
+                            <img src="/images/RestaurantProducts/1586958249bacalla-amb-samfaina.jpg" alt="" class="itemImg" />
+                            <h3 class="name">Product 4</h3>
                             <p> <input type="number" class="form-control text-center qty" value="1"> x $5.00 </p>
                             <p class="movil d-none"> =</p>
                             <p class="stockStatus movil d-none">$15.00</p>
