@@ -18,23 +18,19 @@
                     </div>
                 </a>
             </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header bg-gray">Restaurant</div>
-                    <div class="card-body">
-                        Hi awesome client
+            <div class="col-sm-6 rounded">
+                <a href="{{ route('restaurant.home') }}">
+                    <div class="card">
+                    <span class="thmheader"><h4>City informationt</h4></span>
+                        <img class="card-img" src="{{asset('/images/Client/home-wallpapers/barcelona.jpg')}}" alt="Restaurant">
                     </div>
-                    <div class="card-footer">Soy el puto footer</div>
-                </div>
             </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header bg-gray">Restaurant</div>
-                    <div class="card-body">
-                        Hi awesome client
+            <div class="col-sm-6 rounded">
+                <a href="{{ route('restaurant.home') }}">
+                    <div class="card">
+                    <span class="thmheader"><h4>Hotel information</h4></span>
+                        <img class="card-img" src="{{asset('/images/Client/home-wallpapers/hotel.jpg')}}" alt="Restaurant">
                     </div>
-                    <div class="card-footer">Soy el puto footer</div>
-                </div>
             </div>
     </div>
 </div>

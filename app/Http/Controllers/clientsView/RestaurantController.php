@@ -18,12 +18,8 @@ class RestaurantController extends Controller
     }
 
     public function myOrder(){
-        return view('clients.restaurant.myOrder');
-        /* if(Auth::guard("worker")->check()){
-            if (Auth::guard('worker')->user()->username === "client") {
-                return Auth::guard('worker')->user()->username;
-            }
-        } */
+        $products = TempOrder::all()->where('client_username',Auth::guard('worker')->user()->username);
+        return view('clients.restaurant.myOrder', \compact('products'));
     }
 
     public function newTempOrder(Request $request){
@@ -31,7 +27,7 @@ class RestaurantController extends Controller
                 'client_username' => Auth::guard('worker')->user()->username,
                 'name' => $request->name,
                 'price' => $request->price,
-                'quantity' => 1,
+                'quantity' => $request->quantity,
                 'image' => $request->image
             ]);
             return response()->json([

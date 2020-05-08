@@ -20,7 +20,6 @@
                     @endforeach
                     <li class="nav-item">
                         <a href="{{ route('restaurant.myOrder') }}" class="btn btn-primary" style="background-color: #007bff00;"><i class="fas fa-concierge-bell"></i> My order <span class="badge-order">0</span></a>
-                        
                     </li>
                 </ul>
             </div>  
@@ -45,6 +44,10 @@
                                         </span>
                                     </a>
                                     <button type="button" class="btn btn-primary ml-1 addToOrder"><i class="fas fa-plus-circle"></i> Order</button>
+                                    &nbsp
+                                    <div class="quantity">
+                                        <input class="qty" type="number" min="1" max="9" step="1" value="1">
+                                    </div>
                                 </div>
                             </div>
                         </div>

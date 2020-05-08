@@ -35,7 +35,7 @@
                                 <td>{{$product->price}}</td>
                                 <td>{{$product->description}}</td>
                                 <td>{{$product->category}}</td>
-                                <td><img class="img-responsive" alt="{{$product->name}}" width="200" height="130" src="/images/{{$product->image}}"></td>
+                                <td><img class="img-responsive" alt="{{$product->name}}" width="200" height="130" src="/images/RestaurantProducts/{{$product->image}}"></td>
                                 <td>
                                     <a href="{{ route('product.edit',$product->id) }}" class="btn btn-success" type="submit">Edit</a>
                                     <form action="{{ route('product.disable',$product->id) }}" method="post">
