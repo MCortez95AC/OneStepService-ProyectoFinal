@@ -71,7 +71,11 @@ class LoginController extends Controller
 
             return redirect()->intended('/admin/worker');
         }
-        return back()->withInput($request->only('username', 'remember'));
+        if (Auth::guard('client')) {
+            $message = "Ooops! someone is in the wrong login, please go to your login.";
+        }
+
+        return back()->withInput($request->only('username', 'remember'))->with('info',$message);
     }
 
     public function showClientLoginForm()
@@ -87,11 +91,15 @@ class LoginController extends Controller
         ]);
 
         $credentials = $request->only('username', 'password');
-        if (Auth::guard('worker')->attempt($credentials, $request->get('remember'))) {
+        if (Auth::guard('client')->attempt($credentials, $request->get('remember'))) {
 
             return redirect()->intended('/client/home');
         }
+        if (Auth::guard('worker')) {
+            $message = "You´re trying login like a admin, please go to your admin login.";
+        }
 
-        return back()->withInput($request->only('username', 'remember', 'message','No matches'));
+        return back()->withInput($request->only('username', 'remember', 'info','No matches'))->with('info',$message);
+    
     }
 }

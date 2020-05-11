@@ -1,3 +1,8 @@
+    $( document ).ready(function() {
+        $('.bg-unavailable').removeAttr("onClick");
+        
+    })
+    
     const nameList = [
         'Time','Past','Future','Dev',
         'Fly','Flying','Soar','Soaring','Power','Falling',
@@ -75,6 +80,12 @@
         }
     }
 
+    //Generate client Hotel Account
+    $('#lastname').blur( () =>{
+        let newhotelAccount = $('#name').val().substr(0, 1)+'.'+ $('#lastname').val() + Math.floor(Math.random() * 500);
+        $('#hotelAccount').val(newhotelAccount)
+    })
+
     //Send the datas to Register controller by Ajax
     let roomId;
     function getRoom(event){
@@ -86,13 +97,12 @@
 
     $("#register").click(function(){
         let name = $('#name');
+        let lastname = $('#lastname');
         let email = $('#email');
         let room =$('#roomNumber');
         let passwd_conf = $('#password-confirm');
         const url = "http://onestepservice.com/admin/client/create";
         const token = $("#token").val();
-
-        console.log(roomId)
 
         $.ajax({
             url: url,
@@ -101,6 +111,7 @@
             dataType: 'json',
             data: {
                 name: name.val(),
+                lastName: lastname.val(),
                 room: room.val(),
                 roomId: roomId,
                 email: email.val(),
@@ -110,6 +121,7 @@
             },
             success:function(response){
                 name.val("");
+                lastname.val("");
                 email.val("");
                 username.val("");
                 password.val("");
@@ -117,14 +129,16 @@
                 
                 $("#msj-success").fadeIn();
                 $("#msj-error").fadeOut();
-                $("#print").removeAttr("disabled"); 
-                console.log(response);
-                
+                $("#print").removeAttr("disabled");                 
             },
             error:function(msj){
-/*                 if (msj.responseJSON.errors.name) {
+                if (msj.responseJSON.errors.name) {
                     $("#msj-name").html(msj.responseJSON.errors.name);
                     $("#msj-error-name").fadeIn();
+                }
+                if (msj.responseJSON.errors.lastName) {
+                    $("#msj-lastName").html(msj.responseJSON.errors.lastName);
+                    $("#msj-error-lastName").fadeIn();
                 }
                 if (msj.responseJSON.errors.email) {
                     $("#msj-email").html(msj.responseJSON.errors.email);
@@ -137,7 +151,11 @@
                 if (msj.responseJSON.errors.password) {
                     $("#msj-username").html(msj.responseJSON.errors.password);
                     $("#msj-error-username").fadeIn();
-                } */
+                }
+                if (msj.responseJSON.errors.room) {
+                    $("#msj-room").html(msj.responseJSON.errors.room);
+                    $("#msj-error-room").fadeIn();
+                }
                 console.log(msj)
             }
         });

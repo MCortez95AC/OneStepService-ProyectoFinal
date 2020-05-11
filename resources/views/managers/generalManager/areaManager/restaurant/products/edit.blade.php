@@ -9,8 +9,8 @@
                 </div>
                 <div class="card-body  table-responsive">
                     <form action="{{ route('product.update',$product->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
                         @method('put')
+                        @csrf
                         <div class="form-group" >
                             <label>Name</label>
                             <input type="text" name="name" value="{{ $product->name }}" class="form-control">

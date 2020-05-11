@@ -16,6 +16,7 @@ class CreateWorkersTable extends Migration
         Schema::create('workers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('lastname');
             $table->string('dni')->unique();
             $table->string('username',50)->unique()->nullable();
             $table->string('email')->unique();

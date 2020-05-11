@@ -18,7 +18,7 @@ class ClientsTableSeeder extends Seeder
         $client->name ="Oriol";
         $client->username = "client";
         $client->email = "oriolClient@1stepservice.cat";
-        $client->password ="12345678";
+        $client->password = bcrypt('12345678');
         $client->historic_id = 1;
 
         

@@ -243,5 +243,7 @@
 <script type="text/javascript" src="{{ asset('/js/clientsgenerator.js' )}}"></script>
 <script type="text/javascript" src="{{ asset('/js/workerIsAdmin.js' )}}"></script>
 <script type="text/javascript" src="{{ asset('/js/tables.js' )}}"></script>
+{{-- <script type="text/javascript" src="{{ asset('/js/pusher.min.js' )}}"></script>
+<script type="text/javascript" src="{{ asset('/js/pusher.js' )}}"></script> --}}
 </body>
 </html>

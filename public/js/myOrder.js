@@ -1,12 +1,17 @@
 $( document ).ready(function() {
-  console.log( "ready!" );
+  
+  $('.prodTotal').each(function() {
+    let toatalProd = Math.round(($('.qty').val() * parseFloat($('.price').text()) * 100 ) / 100).toFixed(2)
+    let alt = ($('.qty').val() * parseFloat($('.price').text())).toFixed(2)
+    $('.totalProduct').text(alt)
+  })
+  
 });
 
 // Remove Items From Cart
 $('a.remove').click(function(){
     event.preventDefault();
     $( this ).parent().parent().parent().hide( 'slow', function(){ $( this ).remove(); } );
-    console.log($('.name').text());
 })
   // Just for testing, show all items
 $('a.btna.continue').click(function(){

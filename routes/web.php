@@ -18,6 +18,7 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
         });
             /* Resutaurant Area */
         Route::group(['prefix'=>'restaurant'],function(){
+                /* Restaurant Products */
             Route::get('products', 'ProductController@index')->name('products.index');
             Route::get('products/disabled','ProductController@disabledProducts')->name('disabled.products');
             Route::get('products/create', 'ProductController@create')->name('products.create');
@@ -31,7 +32,14 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
             Route::get('worker/create','WorkerController@create')->name('worker.create');
             Route::post('product/cretate','WorkerController@store')->name('worker.store');
             Route::get('workers','WorkerController@index')->name('workers.index');
-            //fin
+            Route::get('worker/{id}/edit','WorkerController@edit')->name('worker.edit');
+            Route::delete('worker/{id}','WorkerController@destroy')->name('worker.destroy');
+            Route::put('worker/{id}','WorkerController@update')->name('worker.update');
+            Route::delete('worker/{id}','WorkerController@destroy')->name('worker.destroy');
+                
+                /* Orders Panel */
+            Route::get('panel', 'RestaurantPanelController@panel')->name('restaurant.panel');
+
         });
 
             /* Room Service */
@@ -47,7 +55,10 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
 
             Route::get('workers','WorkerRoomServiceController@index')->name('workers.rs.index');
             Route::get('worker/create','WorkerRoomServiceController@create')->name('worker.rs.create');
+            Route::get('worker/{id}/edit','WorkerRoomServiceController@edit')->name('worker.rs.edit');
             Route::post('product/cretate','WorkerRoomServiceController@store')->name('worker.rs.store');
+            Route::delete('worker/{id}','WorkerRoomServiceController@destroy')->name('worker.rs.destroy');
+            Route::put('worker/{id}','WorkerRoomServiceController@update')->name('worker.rs.update');
         });
 
         //Workers Model
@@ -59,10 +70,16 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
         Route::get('clients','ClientCRUDController@index')->name('client.index');
         Route::get('/client/create', 'ClientCRUDController@create')->name('client.create');
         Route::post('/client/create', 'clientCRUDController@store')->name('client.store');
+        Route::get('/client/{id}/edit', 'clientCRUDController@edit')->name('client.edit');
+        Route::delete('/client/{id}', 'clientCRUDController@destroy')->name('client.destroy');
+        Route::put('/client/{id}','clientCRUDController@update')->name('client.update');
     });
 });
+
+
+
     //Clients View
-    Route::group(['middleware' => ['auth:worker']],function(){
+    Route::group(['middleware' => ['auth:client']],function(){
         Route::group(['prefix'=>'client'],function(){
             Route::get('home', 'clientsView\ClientController@home')->name('client.home');
             Route::group(['prefix'=>'restaurant'],function(){
@@ -70,7 +87,19 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
                 Route::get('products/{category}','clientsView\RestaurantController@index')->name('products.category');
                 Route::get('myOrder','clientsView\RestaurantController@myOrder')->name('restaurant.myOrder');
                 Route::Post('tempOrder/create','clientsView\RestaurantController@newTempOrder')->name('restaurant.tempOrder');
+                /* Route::delete('car') */
             });
             
         });
+    });
+
+    Route::get('test',function(){
+        return view('managers.generalManager.testPusher');
+    });
+
+    Route::get('message', function () {
+        $message['user'] = "Miguel Cortez";
+        $message['message'] =  "Prueba mensaje desde Pusher";
+        $success = event(new App\Events\NewMessage($message));
+        return $success;
     });

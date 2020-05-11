@@ -18,14 +18,13 @@ class WorkerController extends Controller
     }
 
     /* validate correct information */
-    protected function validatorIfIsAdmin(array $data)
-    {
+    protected function validatorIfIsAdmin(array $data){
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'area' =>'required',
+            'name' => 'required|string|max:50',
+            'lastname' => 'required|string|max:30|min:3',
+            'email' => 'required|string|email|max:50|unique:users',
+            'username' => 'required|string|max:20|min:3|unique:users',
+            'password' => 'required|string|min:8|confirmed',
             'dni' => 'required'
         ]);
     }
@@ -33,9 +32,9 @@ class WorkerController extends Controller
     protected function validatorIfNotAdmin(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'area' =>'required',
+            'name' => 'required|string|max:30|min:3',
+            'lastname' => 'required|string|max:30|min:3',
+            'email' => 'required|string|email|max:50|unique:users',
             'dni' => 'required'
         ]);
     }
@@ -68,28 +67,29 @@ class WorkerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){  
-         //if the request is sending by restaunrant the Worker area will be RESTAURANT else ROOM SERVICE
+        //if the request is sending by restaunrant the Worker area will be RESTAURANT else ROOM SERVICE
         if ($request->is('admin/restaurant/*')) {
             if ($request->input('isAdmin') === 'Yes') {
                 $this->validatorIfIsAdmin($request->all())->validate();
                 Worker::create([
                     'name' => $request->name,
+                    'lastname' => $request->lastname,
                     'dni' => $request->dni,
                     'email' => $request->email,
                     'username' => $request->username,
-                    'area' => $request->area,
+                    'area' => 'Restaurant',
                     'is_admin' => 1,
                     'password' => Hash::make($request->password),
                 ]);
-
                 return redirect()->route('workers.index')->with('info','Admin Restaurant Worker created successfully');
             } else{
                 $this->validatorIfNotAdmin($request->all())->validate();
                 Worker::create([
                     'name' => $request->name,
+                    'lastname' => $request->lastname,
                     'dni' => $request->dni,
                     'email' => $request->email,
-                    'area' => $request->area,
+                    'area' => 'Restaurant',
                     'is_admin' => 0,
                 ]);
                 return redirect()->route('workers.index')->with('info','Restaurant Worker created successfully');
@@ -100,6 +100,7 @@ class WorkerController extends Controller
     /**
      * Display the specified resource.
      *
+     * 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -116,7 +117,8 @@ class WorkerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $worker = Worker::findOrFail($id);
+        return view('managers.generalManager.areaManager.restaurant.workers.edit',compact('worker'));
     }
 
     /**
@@ -128,7 +130,15 @@ class WorkerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $worker = Worker::findOrFail($id);
+
+        $worker->name = $request->name;
+        $worker->lastname = $request->lastname;
+        $worker->dni = $request->dni;
+        $worker->email = $request->email;
+        $worker->save();
+        return redirect()->route('workers.index')->with('info','Worker updated successfully');
+
     }
 
     /**
@@ -139,6 +149,8 @@ class WorkerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $worker = Worker::findOrFail($id);
+        $worker->delete();
+        return redirect()->route('workers.index')->with('info','Worker delete successfully');
     }
 }

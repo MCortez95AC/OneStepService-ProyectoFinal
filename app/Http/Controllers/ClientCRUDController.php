@@ -8,6 +8,7 @@ use App\Room;
 use App\Client;
 use App\Historic;
 use Illuminate\support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class ClientCRUDController extends Controller
 {
@@ -22,16 +23,19 @@ class ClientCRUDController extends Controller
     }
     protected function validatorClient(array $data){
         return Validator::make($data, [
-            'name' => 'required|string|max:255|unique:clients',
+            'name' => 'required|string|max:30|min:3',
+            'lastName' => 'required|string|max:30|min:3',
             'email' => 'unique:clients',
-            'username' => 'required|string|max:255|unique:users',
+            'room' => 'required',
+            'username' => 'required|string|max:100|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
     public function index()
     {
-        return view('managers.generalManager.clients.index');
+        $clients = Client::all();
+        return view('managers.generalManager.clients.index', compact('clients'));
     }
 
     /**
@@ -69,18 +73,24 @@ class ClientCRUDController extends Controller
                 'departure_date' => null,
                 'room_id' => $request->roomId
             ]);
+
+            /* Update room to disable */
+                $selectedRoom= Room::findOrFail($request->roomId);
+                $selectedRoom->available = 0;
+                $selectedRoom->save();
             /* Create the client request */
             Client::create([
                 'historic_id' => $historic_id,
                 'name' => $request->name,
+                'lastname' => $request->lastName,
                 'username' => $request->username,
                 'email' => $request->email,
-                'password' => $request->password,
-                'hotel_account' => $request->name.Str::random(2)
+                'password' => Hash::make($request->password),
+                'hotel_account' => $request->hotelAccount
             ]);
-            return response()->json([
+            /* return response()->json([
                 "mensaje" => $request->roomId
-            ]);
+            ]); */
         };
     }
 
@@ -103,7 +113,11 @@ class ClientCRUDController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $rooms = Room::all();
+        $historic = Historic::findOrFail($client->historic_id);
+
+        return view('managers.generalManager.clients.edit', compact('client', 'rooms', 'historic'));
     }
 
     /**
@@ -115,7 +129,15 @@ class ClientCRUDController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $historic = Historic::findOrFail($client->historic_id);
+        $Newroom = Room::findOrFail($request->roomNumber);
+/*         
+        $client->name = $request->name;
+        $client->lastname = $request->lastname;
+        $client->email = $request->email; */
+
+        
     }
 
     /**
@@ -126,6 +148,8 @@ class ClientCRUDController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->delete();
+        return redirect()->route('client.index')->with('info','Client delete successfully');
     }
 }

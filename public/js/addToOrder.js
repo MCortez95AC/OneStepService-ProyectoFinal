@@ -2,7 +2,7 @@
 
 async function newTempOrder(data){
     try {
-        const response = await fetch("http://onestepservice.com/client/restaurant/tempOrder/create",{
+        const response = await fetch(`{{ route('/client/restaurant/tempOrder/create') }}`,{
             method: "POST",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),

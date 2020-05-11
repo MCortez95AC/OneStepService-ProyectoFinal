@@ -8,60 +8,42 @@
                     <h3 class="card-title">Hotel Clients</h3>
                     <a href="{{ route('client.create') }}" class="btn bg-newOjbect float-right">New Client</a>
                 </div>
+                @if(session('info'))
+                    <br>
+                    <div class="alert alert-success">
+                        {{session('info')}}
+                    </div>
+                @endif
                 <div class="card-body table-responsive">
-                    <table id="example2" class="table table-bordered table-hover">
+                    <table id="targetPersonal" class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>Name </th>
+                            <th>LastName </th>
                             <th>UserName</th>
-                            <th>Room Number</th>
+                            <th>E-mail</th>
                             <th>Hotel Account</th>
-                            <th>Enter date</th>
+                            <th>Acction</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Miguel</td>
-                            <td>Cortez</td>
-                            <td>Y4558259-4SD</td>
-                            <td>Restaurant</td>
-                            <td>Si</td>
-                        </tr>
-                        <tr>
-                            <td>Miguelinho</td>
-                            <td>Cortez</td>
-                            <td>Z4558259-4SD</td>
-                            <td>Room Service</td>
-                            <td>No</td>
-                        </tr>
-                        <tr>
-                            <td>Miquel</td>
-                            <td>Chavez</td>
-                            <td>Y4558259-4SF</td>
-                            <td>Restaurant</td>
-                            <td>NO</td>
-                        </tr>
-                        <tr>
-                            <td>Marta</td>
-                            <td>Bella</td>
-                            <td>Y4csf8259-4SD</td>
-                            <td>Pool</td>
-                            <td>Si</td>
-                        </tr>
-                        <tr>
-                            <td>Oriol</td>
-                            <td>Cortes</td>
-                            <td>Z4cfed59-4SD</td>
-                            <td>Room Service</td>
-                            <td>Si</td>
-                        </tr>
-                        <tr>
-                            <td>M.Gaya</td>
-                            <td>Cortes</td>
-                            <td>Ycdss8259-4SF</td>
-                            <td>Restaurant</td>
-                            <td>NO</td>
-                        </tr>
+                            @foreach($clients as $client)
+                                <tr>
+                                    <td>{{$client->name}}</td>
+                                    <td>{{$client->lastname}}</td>
+                                    <td>{{$client->username}}</td>
+                                    <td>{{$client->email}}</td>
+                                    <td>{{$client->hotel_account}}</td>
+                                    <td>
+                                        <a href="{{ route('client.edit',$client->id) }}" class="btn btn-success btn-sm" type="submit">Edit</a>
+                                        <a href="javascript:document.getElementById('delete-{{$client->id}}').submit()" class="btn btn-danger btn-sm" rol="button" type="submit">Delete</a>
+                                        <form id="delete-{{$client->id}}" action="{{ route('client.destroy',$client->id) }}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

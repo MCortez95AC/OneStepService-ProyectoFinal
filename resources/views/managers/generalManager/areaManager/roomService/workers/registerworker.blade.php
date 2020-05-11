@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mt-4">
             <div class="card">
-                <div class="card-header bg-gradient-blue"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}</div>
+                <div class="card-header bg-table-headers"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}</div>
                 {{-- Created worker message --}}
                 @if(session('info'))
                     <br>
@@ -22,6 +22,17 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('LastName') }}</label>
+                            <div class="col-md-6">
+                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}"autocomplete="lastname">
+                                @error('lastname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -51,18 +62,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="area" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
-                            <div class="col-md-6">
-                                <input id="area" type="text" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ old('area') }}"autocomplete="area">
-                                @error('area')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Is admin?') }}</label>
+                            <label for="sel1" class="col-md-4 col-form-label text-md-right">{{ __('Is admin?') }}</label>
                             <div class="col-md-6">
                                 <select class="form-control" id="sel1" name="isAdmin">
                                     <option selected="true">No</option>

@@ -16,19 +16,22 @@
                     </div>
                 @endif
                 <div class="card-body  table-responsive">
-                    <table id="example2" class="table table-bordered table-hover">
+                    <table id="targetPersonal" class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>Name </th>
+                            <th>LastName </th>
                             <th>DNI</th>
                             <th>Email</th>
                             <th>Is Admin</th>
+                            <th>Acction</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($workers as $worker)
                                 <tr>
                                     <td>{{$worker->name}}</td>
+                                    <td>{{$worker->lastname}}</td>
                                     <td>{{$worker->dni}}</td>
                                     <td>{{$worker->email}}</td>
                                     @if($worker->is_admin == 0)
@@ -36,6 +39,14 @@
                                     @else
                                         <td>Yes</td>
                                     @endif
+                                    <td>
+                                        <a href="{{ route('worker.edit',$worker->id) }}" class="btn btn-success btn-sm" type="submit">Edit</a>
+                                        <a href="javascript:document.getElementById('delete-{{$worker->id}}').submit()" class="btn btn-danger btn-sm"rol="button" type="submit">Delete</a>
+                                        <form id="delete-{{$worker->id}}" action="{{ route('worker.destroy',$worker->id) }}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -114,6 +114,12 @@
                     @endif
                 </div>
             </div>
+                @if(session('info'))
+                    <br>
+                    <div class="alert alert-danger">
+                        {{session('info')}}
+                    </div>
+                @endif
             <div class="account text-center">
             <p>Don't have an account?</p>
             <a href="#" class="link-text">I want an account</a>
@@ -123,9 +129,9 @@
         <article class="panel__footer">
             <p class="small">©2019 1StepService</p>
             <ul class="list-unstyle list-inline">
-            <li class="list-inline-item small"><a href="#">Privacy Policy</a></li>
-            <li class="list-inline-item small"><a href="#">Terms</a></li>
-            <li class="list-inline-item small"><a href="#">Help</a></li>
+                <li class="list-inline-item small"><a href="#">Privacy Policy</a></li>
+                <li class="list-inline-item small"><a href="#">Terms</a></li>
+                <li class="list-inline-item small"><a href="#">Help</a></li>
             </ul>
             
         </article>

@@ -35,18 +35,18 @@
                                 <td>{{$product->price}}</td>
                                 <td>{{$product->description}}</td>
                                 <td>{{$product->category}}</td>
-                                <td><img class="img-responsive" alt="{{$product->name}}" width="200" height="130" src="/images/{{$product->image}}"></td>
+                                <td><img class="img-responsive" alt="{{$product->name}}" width="200" height="130" src="/images/RoomServiceProducts/{{$product->image}}"></td>
                                 <td>
-                                    <a href="{{ route('product.rs.edit',$product->id) }}" class="btn btn-success" type="submit">Edit</a>
-                                    <form action="{{ route('product.rs.disable',$product->id) }}" method="post">
+                                    <a href="{{ route('product.rs.edit',$product->id) }}" class="btn btn-success btn-sm" type="submit">Edit</a>
+                                    <a href="javascript:document.getElementById('disable-{{$product->id}}').submit()" class="btn btn-warning btn-sm" type="submit">Disable</a>
+                                    <a href="javascript:document.getElementById('delete-{{$product->id}}').submit()" class="btn btn-danger btn-sm"rol="button" type="submit">Delete</a>
+                                    <form id="disable-{{$product->id}}" action="{{ route('product.rs.disable',$product->id) }}" method="post">
                                     @method('put')
                                     @csrf
-                                        <button class="btn btn-warning" type="submit">Disable</button>
                                     </form>
-                                    <form action="{{ route('product.rs.destroy',$product->id) }}" method="post">
+                                    <form id="delete-{{$product->id}}" action="{{ route('product.rs.destroy',$product->id) }}" method="post">
                                     @method('delete')
                                     @csrf
-                                        <button class="btn btn-danger" rol="button" type="submit">Delete</button>
                                     </form>
                                 </td>
                             </tr>

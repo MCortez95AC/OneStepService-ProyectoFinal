@@ -18,7 +18,7 @@
         protected $guard = 'worker';
         /* to create products */
         protected $fillable = [
-            'name', 'dni', 'email', 'area','is_admin',
+            'name', 'lastname', 'dni', 'email', 'area','is_admin',
             'password', 'username','password_confirmation'
         ];
 
