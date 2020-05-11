@@ -17,7 +17,7 @@
                     </div>
                 @endif
                 <div class="card-body  table-responsive overflow-auto" style="height: 450px">
-                    <table id="example2" class="table table-bordered table-hover">
+                    <table id="products" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Name</th>

@@ -12,11 +12,11 @@ class categoriesTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-        ['name' => "menu",'description' => "Food dishes"],
+        ['name' => "Menu",'description' => "Food dishes"],
         ['name' => "Drinks",'description' => "Drinks withouth alcohol"],
         ['name' => "Wines",'description' => "Local and exported wines"],
         ['name' => "Snacks",'description' => "Food with sugar"],
-        ['name' => "desserts",'description' => "cakes"]
+        ['name' => "Desserts",'description' => "cakes"]
         ];
         \DB::table('categories')->insert($categories);
     }

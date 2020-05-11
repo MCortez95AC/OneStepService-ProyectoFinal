@@ -16,11 +16,12 @@ class ClientsTableSeeder extends Seeder
 
         $client = new Client();
         $client->name ="Oriol";
+        $client->lastname = "Cortes";
         $client->username = "client";
+        $client->hotel_account = "O.Cortes125";
         $client->email = "oriolClient@1stepservice.cat";
         $client->password = bcrypt('12345678');
         $client->historic_id = 1;
-
         
         $client->save();
 

@@ -151,7 +151,7 @@
 <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-orange elevation-4">
         <!-- Brand Logo -->
-        <a href="" class="brand-link">
+        <a href="{{ url('/') }}" class="brand-link">
             <img src="{{ asset('./images/logo/logo2.png') }}" alt="1StepService Logo" class="brand-image img-circle elevation-3">
             <span class="brand-text font-weight-light">1StepService</span>
         </a>
@@ -164,12 +164,12 @@
                 <li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link bg-headers active"><i class="fas fa-users"></i> <p>Users<i class="right fas fa-angle-left"></i></p></a>
                         <ul class="nav nav-treeview">
-                        <li class="nav-item">
+{{--                         <li class="nav-item">
                             <a href="{{ route('register') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>New Super Manager</p></a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ asset('/admin/workers') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>All Workers</p></a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="{{ asset('/admin/clients') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Clients</p></a>
                         </li>
@@ -240,10 +240,10 @@
 <script src="{{asset('/dist/js/adminlte.min.js')}}"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <!-- App -->
-<script type="text/javascript" src="{{ asset('/js/clientsgenerator.js' )}}"></script>
-<script type="text/javascript" src="{{ asset('/js/workerIsAdmin.js' )}}"></script>
-<script type="text/javascript" src="{{ asset('/js/tables.js' )}}"></script>
-{{-- <script type="text/javascript" src="{{ asset('/js/pusher.min.js' )}}"></script>
-<script type="text/javascript" src="{{ asset('/js/pusher.js' )}}"></script> --}}
+<script type="text/javascript" src="{{ asset('/dist/js/clientsgenerator.js' )}}"></script>
+<script type="text/javascript" src="{{ asset('/dist/js/workerIsAdmin.js' )}}"></script>
+<script type="text/javascript" src="{{ asset('/dist/js/tables.js' )}}"></script>
+<script type="text/javascript" src="{{ asset('/dist/js/pusher.min.js' )}}"></script>
+<script type="text/javascript" src="{{ asset('/dist/js/sendOrderToRestaurant.js' )}}"></script>
 </body>
 </html>

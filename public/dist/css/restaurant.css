@@ -35,15 +35,12 @@ span.thmheader {
 .bg { 
     background-image:url("/images/client/restaurant/home-restaurant.jpg");
     width:100%;
-    /* height:83vh; */
-    /* position:absolute; */
-/*     top:0;
-    bottom:0;;  */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow:inset 0 0 0 2000px rgba(108, 104, 107, 0.64);
     color:#fff;
+    min-height: 100vh;
   }
   /* @media screen and (max-height: 760px) {
     .bg {

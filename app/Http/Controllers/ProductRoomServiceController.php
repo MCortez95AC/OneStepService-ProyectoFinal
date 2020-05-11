@@ -45,7 +45,7 @@ class ProductRoomServiceController extends Controller
         if ($request->hasFile('image')) {
             $file =$request->file('image');
             $fileName = time().$file->getClientOriginalName(); //le concat la hora a la imagen para crear el nombre
-            $file->move(public_path().'/images/',$fileName); //guardamos la imagen el la carpeta images en public
+            $file->move(public_path().'/images/RoomServiceProducts/',$fileName); //guardamos la imagen el la carpeta images en public
 
         }else return 'falla';
         $product = new Product();
@@ -100,7 +100,7 @@ class ProductRoomServiceController extends Controller
             $file =$request->file('image');
             $name = time().$file->getClientOriginalName(); //le ponemos concat la hora a la imagen para crear el nombre
             $product->image = $name;
-            $file->move(public_path().'/images/',$name); //guardamos la imagen el la carpeta images en public
+            $file->move(public_path().'/images/RoomServiceProducts/',$name); //guardamos la imagen el la carpeta images en public
             
         }
 
@@ -120,7 +120,7 @@ class ProductRoomServiceController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $filePath = public_path().'/images/'.$product->image;
+        $filePath = public_path().'/images/RoomServiceProducts/'.$product->image;
         if (file_exists($filePath)) {
             \File::delete($filePath);
         }

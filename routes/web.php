@@ -87,6 +87,8 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
                 Route::get('products/{category}','clientsView\RestaurantController@index')->name('products.category');
                 Route::get('myOrder','clientsView\RestaurantController@myOrder')->name('restaurant.myOrder');
                 Route::Post('tempOrder/create','clientsView\RestaurantController@newTempOrder')->name('restaurant.tempOrder');
+                /* Route::Post('tempOrder/chargeOnHotelAccount','clientsView\RestaurantController@chargeOnHotelAccount')->name('restaurant.chargeOnHotelAccount'); */
+                Route::Post('tempOrder/chargeOnHotelAccount','RestaurantPanelController@chargeOnHotelAccount');;
                 /* Route::delete('car') */
             });
             
@@ -103,3 +105,9 @@ Route::group(['middleware' => ['auth:worker,web']],function(){
         $success = event(new App\Events\NewMessage($message));
         return $success;
     });
+/*     Route::get('sendToPanel', function () {
+        $message['user'] = "Miguel Cortez";
+        $message['message'] =  "Prueba mensaje desde Pusher";
+        $success = event(new App\Events\SendOrderToRestaurant($message));
+        return $success;
+    }); */

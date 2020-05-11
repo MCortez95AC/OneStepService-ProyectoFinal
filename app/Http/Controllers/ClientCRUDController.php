@@ -88,9 +88,10 @@ class ClientCRUDController extends Controller
                 'password' => Hash::make($request->password),
                 'hotel_account' => $request->hotelAccount
             ]);
-            /* return response()->json([
-                "mensaje" => $request->roomId
-            ]); */
+            return response()->json([
+                "status" => 200, 
+                "Message" => $request->hotelAccount
+            ]);
         };
     }
 
@@ -132,12 +133,6 @@ class ClientCRUDController extends Controller
         $client = Client::findOrFail($id);
         $historic = Historic::findOrFail($client->historic_id);
         $Newroom = Room::findOrFail($request->roomNumber);
-/*         
-        $client->name = $request->name;
-        $client->lastname = $request->lastname;
-        $client->email = $request->email; */
-
-        
     }
 
     /**

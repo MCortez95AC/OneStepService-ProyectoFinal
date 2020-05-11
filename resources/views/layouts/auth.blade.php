@@ -160,8 +160,10 @@
     
     <script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap 4 -->
+    <script type="text/javascript" src="{{ asset('/dist/js/pusher.min.js' )}}"></script>
     <script src="{{asset('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script type="text/javascript" src="{{ asset('/js/addToOrder.js' )}}"></script>
+    <script type="text/javascript" src="{{ asset('/dist/js/addToOrder.js' )}}"></script>
+    <script type="text/javascript" src="{{ asset('/dist/js/sendOrderToRestaurant.js' )}}"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 /* import * as orderService from './services/OrderService'; */
-
 async function newTempOrder(data){
+
     try {
-        const response = await fetch(`{{ route('/client/restaurant/tempOrder/create') }}`,{
+        let response = await fetch(`/client/restaurant/tempOrder/create`,{
             method: "POST",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -10,10 +10,10 @@ async function newTempOrder(data){
             },
             body: JSON.stringify(data)
         })
-
+        console.log(response);
+        
         if (response.status === 200) {
             console.log("Orden temporal creado");
-            
         }
         
     } catch (error) {
@@ -35,8 +35,6 @@ $( document ).ready(function() {
             image: $(event.target).closest('.card').find('.image').attr('src'),
             quantity: $(event.target).closest('.card-body').find('.qty').val()
         }
-        console.log(product);
-        
         newTempOrder(product);
     })
 });

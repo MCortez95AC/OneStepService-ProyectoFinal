@@ -20,7 +20,8 @@ class WorkersTableSeeder extends Seeder
         foreach (range(1,10) as $value) {
             \DB::table('workers')->insert(array (
                 'name' => $faker->firstName,
-                'dni' => Str::random(9).$faker->numberBetween(1, 29),
+                'lastname' => $faker->lastName,
+                'dni' => $faker->randomNumber(9).Str::random(1),
                 'area' => $areas[array_rand($areas,1)],
                 'email' => $faker->unique()->email,
                 'is_admin' => false
@@ -34,19 +35,21 @@ class WorkersTableSeeder extends Seeder
         $worker->dni = '643397089X';
         $worker->area = 'Restaurant';
         $worker->username = "worker";
+        $worker->lastname = "Cortez";
         $worker->email = 'worker@1stepservice.es';
         $worker->password = bcrypt('12345678');
         $worker->is_admin =true;
         $worker->save();
 
-        $client = new Worker();
-        $client->name = 'Oriol';
-        $client->dni = '643367089X';
-        $client->area = 'cliente';
-        $client->username = "client";
-        $client->email = 'client@1stepservice.es';
-        $client->password = bcrypt('12345678');
-        $client->is_admin =true;
-        $client->save();
+        $worker = new Worker();
+        $worker->name = 'Oriol';
+        $worker->dni = '643367089X';
+        $worker->area = 'Room Service';
+        $worker->username = "client";
+        $worker->lastname = "Cortez";
+        $worker->email = 'client@1stepservice.es';
+        $worker->password = bcrypt('12345678');
+        $worker->is_admin =true;
+        $worker->save();
     }
 }

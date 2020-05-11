@@ -99,6 +99,7 @@
         let name = $('#name');
         let lastname = $('#lastname');
         let email = $('#email');
+        let hotelAccount = $('#hotelAccount');
         let room =$('#roomNumber');
         let passwd_conf = $('#password-confirm');
         const url = "http://onestepservice.com/admin/client/create";
@@ -117,6 +118,7 @@
                 email: email.val(),
                 username: username.val(),
                 password: password.val(),
+                hotelAccount: hotelAccount.val(),
                 password_confirmation: passwd_conf.val(),
             },
             success:function(response){
@@ -126,10 +128,13 @@
                 username.val("");
                 password.val("");
                 passwd_conf.val("");
+                hotelAccount.val("");
                 
-                $("#msj-success").fadeIn();
-                $("#msj-error").fadeOut();
-                $("#print").removeAttr("disabled");                 
+                if (response.status === 200) {
+                    $("#msj-success").fadeIn();
+                    $("#msj-error").fadeOut();
+                    $("#print").removeAttr("disabled"); 
+                }               
             },
             error:function(msj){
                 if (msj.responseJSON.errors.name) {
@@ -156,7 +161,6 @@
                     $("#msj-room").html(msj.responseJSON.errors.room);
                     $("#msj-error-room").fadeIn();
                 }
-                console.log(msj)
             }
         });
     });

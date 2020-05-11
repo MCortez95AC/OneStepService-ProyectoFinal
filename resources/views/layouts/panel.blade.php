@@ -85,6 +85,6 @@
     <!-- Bootstrap 4 -->
     <script src="{{asset('/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script type="text/javascript" src="{{ asset('/js/pusher.min.js' )}}"></script>
+    <script type="text/javascript" src="{{ asset('/dist/js/pusher.min.js' )}}"></script>
 </body>
 </html>

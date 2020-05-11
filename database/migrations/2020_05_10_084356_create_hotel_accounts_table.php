@@ -15,7 +15,6 @@ class CreateHotelAccountsTable extends Migration
     {
         Schema::create('hotel_accounts', function (Blueprint $table) {
             $table->Increments('id');
-            $table->integer('client_id');
             $table->string('account_name');
             $table->float('amount');
             $table->timestamps();
